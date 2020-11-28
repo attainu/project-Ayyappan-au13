@@ -15,68 +15,27 @@ print("-------------------------------------------")
 typeofsort = input("Enter Organize Method Option: ")
 folderpath = input('Enter any Directory path to Sort the Files: ')
 
-# To Sort According To Extensions
-class JunkFileOrganiser:
-    def __init__(self):
-        self.file_extentions = dict
-        self.new_path = "organized"
+
+# To Organize the file by Extensions
+
 file_extensions={
-
-    "Audio_Files" : (".aif", ".cda", ".mid", ".mp3", ".mpa", ".ogg", ".wav", ".wpl"),
-    
-    "ASP_Files" : (".asp", ".aspx"),
-    
-    "Compressed_Files" : (".7z", ".arj", ".deb", ".pkg", ".rar", ".rpm", ".tar", ".gz", ".z", ".zip"),
-    
-    "CSS_Files" : (".css"),
-
-    "Disc_and_Media_Files" : (".bin", ".dmg", ".iso", ".toast", ".vcd"),
-    
-    "Database_Files" : (".csv", ".dat", ".db", ".dbf", ".log", ".mdb", ".sav", ".sql", ".tar", ".xml"),
-    
-    "Email_Files" : (".email", ".eml", ".emlx", ".msg", ".oft", ".ost", ".pst", ".vcf"),
-    
-    "Executable_Files" : (".apk", ".bat", ".bin", ".cgi", ".pl", ".com", ".exe", ".gadget", ".jar", ".msi", ".wsf"),
-    
-    "Fonts" : (".fnt", ".font", ".otf", ".ttf"),
-    
-    "HTML_Files" : (".htm", ".html", ".xhtml", ".html5"),
-
-    "Images" : (".ai", ".bmp", ".gif", ".ico", ".jpeg", ".jpg", ".png", ".ps", ".psd", ".svg", ".tiff", ".tif"),
-    
-    "Internet_related_Files" : (".cer", ".cfm", ".cgi", ".pl", ".js", ".jsp", ".part", ".rss"),
-    
-    "PDF_Files" : (".pdf"),
-
-    "PHP_Files" : (".php"),
-
-    "Presentation_Files" : (".key", ".odp", ".pps", ".ppt", ".pptx"),
-
-    "Programming_Files" : (".c", ".class", ".cpp", ".cs", ".h", ".java", ".sh", ".swift", ".vb"),
-
-    "Python_Files" : (".py"),
-
-    "Spreadsheets" : (".ods", ".xls", ".xlsm", ".xlsx"),
-
-    "System_Files" : (".bak", ".cab", ".cfg", ".cpl", ".cur", ".dll", ".dmp", ".drv", ".icns", ".ini", ".lnk", ".msi", ".sys", ".tmp"),
-
-    "Text_Files" : (".rtf", ".tex", ".txt"),
-
-    "Videos" : (".3g2", ".3gp", ".avi", ".flv", ".h264", ".m4v", ".mkv", ".mov", ".mp4", ".mpg", ".mpeg", ".rm", ".swf", ".vob", ".wmv"),
-
-    "Word_Files" : (".doc", ".docx", ".odt", ".wpd")
-
-    }
-new_path={
-    "Organized":("Audio_Files","ASP_Files","Compressed_Files","CSS_Files","Disc_and_Media_Files","Database_Files","Email_Files","Executable_Files","Fonts","HTML_Files","Images","Internet_related_Files","PDF_Files","PHP_Files","Presentation_Files","Programming_Files","Python_Files","Spreadsheets","System_Files","Text_Files","Videos","Word_Files")
+       'Audio':('.mp3','.wav','.flac', '.m4a', '.aac'),
+       'Video':('.mp4','.mkv','.MKV','.flv','.mpeg'),
+       'Images':('.jpeg', '.jpg', '.tiff', '.gif', '.png'),
+       'Docs':('.doc','.pdf','.txt','.docx','.xls', '.xlsx', '.ppt', '.pptx', '.xps'),
+       'Archives':('.zip', '.7z', '.rar'),
+       'Others':('.exe', '.apk', '.bat', '.bin'),
+       'Programming':('.py', '.htm', '.html', '.html5', '.css', '.php', '.js')
 }
-
+new_path={
+    "Organized":('Audio','Video','Images','Docs','Archives','Others','Programming')
+}
 
 if typeofsort=="1":
     print("File Organizing in progress by file extensions, Please wait...")
     wait_time = random.randint(1,30)
     time.sleep(wait_time)
-    
+
     def file_finder(folderpath,file_extensions):
         files=[]
         for file in os.listdir(folderpath):
@@ -111,7 +70,7 @@ if typeofsort=="2":
     print("File Organizing in progress by size of files, Please wait...")
     wait_time = random.randint(1,30)
     time.sleep(wait_time)
-    
+
     def sizecheck(folderpath):
         list_dir=os.walk(folderpath)
         for dir,filename, file in list_dir:
@@ -145,6 +104,7 @@ if typeofsort=="2":
                 except FileExistsError:
                     continue
         print("File organizing completed by Size.")
+    sizecheck(folderpath)
 
 # To Organize the file by Date and Time
 if typeofsort=="3":
@@ -186,6 +146,3 @@ if typeofsort=="3":
                     continue
         print("File organizing completed by Date.")
     date_sort(folderpath)
-
-if __name__ == '__main__':
-    junkfile = JunkFileOrganiser()
